@@ -183,6 +183,7 @@
 //     forin      true, if for in statements need not filter
 //     fragment   true, if HTML fragments should be allowed
 //     indent     the indentation factor
+//     infixin    true, if the infix 'in' operator should be allowed
 //     maxerr     the maximum number of errors to allow
 //     maxlen     the maximum length of a source line
 //     newcap     true, if constructor names capitalization is ignored
@@ -265,7 +266,7 @@
     handheld, hasOwnProperty, head, header, height, hgroup, hr,
     'hta:application', html, html_confusion_a, html_handlers, i, id, identifier,
     identifier_function, iframe, img, immed, implied_evil, in, indent, indexOf,
-    infix_in, init, input, ins, insecure_a, isAlpha, isArray, isDigit, isNaN,
+    infix_in, infixin, init, input, ins, insecure_a, isAlpha, isArray, isDigit, isNaN,
     join, jslint, json, kbd, keygen, keys, label, labeled, lang, lbp,
     leading_decimal_a, led, left, legend, length, 'letter-spacing', li, lib,
     line, 'line-height', link, 'list-style', 'list-style-image',
@@ -352,6 +353,7 @@ var JSLINT = (function () {
             forin     : true,
             fragment  : true,
             indent    :   10,
+            infixin   : true,
             maxerr    : 1000,
             maxlen    :  256,
             newcap    : true,
@@ -2100,6 +2102,7 @@ klass:              do {
                 option.devel   =
                 option.evil    =
                 option.forin   =
+                option.infixin =
                 option.newcap  =
                 option.nomen   =
                 option.on      =
@@ -3309,7 +3312,9 @@ klass:              do {
     bitwise('>>>', 120);
 
     infix('in', 120, function (left, that) {
-        warn('infix_in', that);
+        if (!option.infixin) {
+            warn('infix_in', that);
+        }
         that.left = left;
         that.right = expression(130);
         return that;
