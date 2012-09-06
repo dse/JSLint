@@ -6443,3 +6443,8 @@ klass:              do {
 
     return itself;
 }());
+
+// Local Variables:
+// js-indent-level: 4
+// indent-tabs-mode: nil
+// End:
