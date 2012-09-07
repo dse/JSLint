@@ -1,3 +1,38 @@
+About This Fork of JSLint
+-------------------------
+
+This is my fork of Douglas Crockford's JSLint tool.
+
+I'll be adding features that are primarily of use to me.  I'll be
+adding features I would like Mr. Crockford to add as well.  Features
+include:
+
+- the 'infixin' option, which allows you to use the infix 'in'
+  operator.  I made this while dealing with some code that had an
+  instance of that operator that I didn't feel like dealing with at
+  that time.
+
+Planned/wishlist features and/or bugfixes:
+
+- Blank lines aren't included in the line number counter, so error and
+  warning messages include incorrect line numbers.  This applies even
+  when the 'white' option is set.  My opinion is that blank lines
+  should be allowed even when 'white' is not set.
+
+This repos also contains my implementation of jslint-for-wsh as a
+Windows Script File (along with a separate .js file for the added
+code), though I should probably create a separate repos for it (or a
+fork of jslint-for-wsh).  I believe it is easier to maintain and more
+robust than the original jslint-for-wsh because it keeps the jslint
+code separate from the approximately 50 lines of wrapper code that
+jslint-for-wsh adds.  The official site for the jslint-for-wsh project
+is:
+
+	http://code.google.com/p/jslint-for-wsh/
+
+Original JSLint README
+----------------------
+
 JSLint, The JavaScript Code Quality Tool
 
 Douglas Crockford
